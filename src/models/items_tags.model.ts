@@ -4,13 +4,18 @@ export default async (sequelize: Sequelize) => {
     const Items_tags = sequelize.define(
         'items_tags',
         {
-            tag_id: {
+            id: {
                 primaryKey: true,
+                type: DataTypes.INTEGER.UNSIGNED,
+                autoIncrement: true,
+                unique: true,
+                allowNull: false,
+            },
+            tag_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
             item_id: {
-                primaryKey: true,
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
