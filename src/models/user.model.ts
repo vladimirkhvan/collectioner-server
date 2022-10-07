@@ -1,18 +1,7 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
-const main = async () => {
-    const sequelize = new Sequelize('collector', 'root', '1234', {
-        host: 'localhost',
-        dialect: 'mysql',
-    });
-
-    try {
-        await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database: ', error);
-    }
-
+export default (sequelize: Sequelize) => {
+   
     const User = sequelize.define('user', {
         id: {
             type: DataTypes.INTEGER,
@@ -35,13 +24,5 @@ const main = async () => {
         },
     });
 
-    try {
-        await User.sync();
-        console.log('users table created successfully!');
-    } catch (error) {
-        console.error('Unable to create table : ', error);
-    }
-    sequelize.close();
+    return User;
 };
-
-main();
