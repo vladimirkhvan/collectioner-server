@@ -10,6 +10,10 @@ export default async (sequelize: Sequelize) => {
             primaryKey: true,
             unique: true,
         },
+        collection_id: {
+            type: DataTypes.INTEGER.UNSIGNED,
+            allowNull: false
+        },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
