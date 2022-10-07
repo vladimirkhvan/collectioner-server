@@ -4,7 +4,7 @@ export default (sequelize: Sequelize) => {
    
     const User = sequelize.define('user', {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
@@ -18,8 +18,8 @@ export default (sequelize: Sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        rights: {
-            type: DataTypes.STRING,
+        role: {
+            type: DataTypes.TINYINT.UNSIGNED,
             allowNull: false,
         },
     });
