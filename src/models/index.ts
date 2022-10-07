@@ -8,6 +8,7 @@ import item from './item.model';
 import items_tags from './items_tags.model';
 import tag from './tags.model';
 import user from './user.model';
+import role from './role.model';
 
 const developmentConfig = config.development;
 
@@ -30,4 +31,5 @@ export const db = {
     items_tags: items_tags(sequelize),
     tag: tag(sequelize),
     user: user(sequelize),
+    role: role(sequelize)
 };
