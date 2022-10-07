@@ -14,6 +14,8 @@ export default (sequelize: Sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+    }, {
+        timestamps:false,
     });
 
     return Role;
