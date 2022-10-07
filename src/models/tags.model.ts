@@ -4,7 +4,7 @@ export default async (sequelize: Sequelize) => {
 
     const Tag = sequelize.define('tag', {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,

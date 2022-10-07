@@ -4,7 +4,7 @@ export default (sequelize: Sequelize) => {
 
     const Custom_field = sequelize.define('custom_field', {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
