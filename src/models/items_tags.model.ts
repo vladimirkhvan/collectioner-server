@@ -14,10 +14,18 @@ export default async (sequelize: Sequelize) => {
             tag_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
+                references:{
+                    model:'tag',
+                    key:'id'
+                }
             },
             item_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
+                references:{
+                    model:'item',
+                    key:'id'
+                }
             },
         },
         {

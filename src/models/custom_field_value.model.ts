@@ -13,10 +13,18 @@ export default (sequelize: Sequelize) => {
         item_id: {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
+            references:{
+                model: 'item',
+                key: 'id'
+            }
         },
         custom_field_id: {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
+            references:{
+                model: 'custom_field',
+                key: 'id'
+            }
         },
         data_value: {
             type: DataTypes.STRING

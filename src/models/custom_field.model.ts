@@ -22,6 +22,10 @@ export default (sequelize: Sequelize) => {
         collection_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            references:{
+                model:'collection',
+                key:'id'
+            }
         },
     }, {
         timestamps: false,
