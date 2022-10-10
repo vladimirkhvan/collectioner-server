@@ -1,8 +1,8 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
-export default (sequelize: Sequelize) => {
-   
-    const Role = sequelize.define('role', {
+export default async (sequelize: Sequelize) => {
+
+    const Theme = sequelize.define('tag', {
         id: {
             type: DataTypes.TINYINT.UNSIGNED,
             allowNull: false,
@@ -10,13 +10,14 @@ export default (sequelize: Sequelize) => {
             primaryKey: true,
             unique: true,
         },
-        role: {
+        theme: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
         },
     }, {
-        timestamps:false,
+        timestamps: false,
     });
 
-    return Role;
+    return Theme;
 };

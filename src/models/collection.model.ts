@@ -19,11 +19,11 @@ export default (sequelize: Sequelize) => {
             allowNull: false,
         },
         theme: {
-            type: DataTypes.STRING,
+            type: DataTypes.TINYINT.UNSIGNED,
             allowNull:false,
         },
         image: {
-            type: DataTypes.STRING(2048)
+            type: DataTypes.STRING(75)
         }
     }, {
         timestamps: false,
