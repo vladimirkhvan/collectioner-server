@@ -1,8 +1,15 @@
 import { db } from './models/index';
 import express from 'express';
+import { ApolloServer } from 'apollo-server-express';
+
+import { resolvers } from './schema/Resolvers';
+import { typeDefs } from './schema/TypeDefs';
 
 const main = async () => {
     const app = express();
+    const server = new ApolloServer({ typeDefs, resolvers });
+    await server.start();
+    server.applyMiddleware({ app });
 
     try {
         await db.sequelize.sync();
@@ -12,7 +19,7 @@ const main = async () => {
     }
 
     app.listen(process.env.PORT || 8800, () => {
-        console.log('server is running');
+        console.log(`server started on http://localhost:${process.env.PORT || 8800}/graphql`);
     });
 };
 

@@ -14,10 +14,10 @@
         "dialect": "mysql"
     },
     "production": {
-        "username": "root",
-        "password": "1234",
+        "username": "bc28d183b11b62",
+        "password": "7f4a0721",
         "db_name": "collector",
-        "host": "localhost",
+        "host": "us-cdbr-east-06.cleardb.net",
         "dialect": "mysql"
     }
 }
