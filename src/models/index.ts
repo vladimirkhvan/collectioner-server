@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import * as config from '../config/config.json';
+import * as configPresets from '../config/config.json';
 
 import collection from './collection.model';
 import custom_field_value from './custom_field_value.model';
@@ -10,14 +10,14 @@ import tag from './tags.model';
 import user from './user.model';
 import role from './role.model';
 
-const developmentConfig = config.development;
+const config = process.env.NODE_ENV === 'production' ? configPresets.production : configPresets.development;
 
 const sequelize = new Sequelize(
-    developmentConfig.db_name,
-    developmentConfig.username,
-    developmentConfig.password,
+    config.db_name,
+    config.username,
+    config.password,
     {
-        host: developmentConfig.host,
+        host: config.host,
         dialect: 'mysql',
     },
 );
