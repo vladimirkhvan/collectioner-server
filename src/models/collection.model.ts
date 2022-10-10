@@ -23,7 +23,7 @@ export default (sequelize: Sequelize) => {
             allowNull:false,
         },
         image: {
-            type: DataTypes.STRING(2048)
+            type: DataTypes.STRING(75)
         }
     }, {
         timestamps: false,
