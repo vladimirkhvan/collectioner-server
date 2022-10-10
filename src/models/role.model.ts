@@ -4,7 +4,7 @@ export default (sequelize: Sequelize) => {
    
     const Role = sequelize.define('role', {
         id: {
-            type: DataTypes.INTEGER.UNSIGNED,
+            type: DataTypes.TINYINT.UNSIGNED,
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
