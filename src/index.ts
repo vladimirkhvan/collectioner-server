@@ -19,7 +19,7 @@ const main = async () => {
     }
 
     app.listen(process.env.PORT || 8800, () => {
-        console.log('server is running');
+        console.log(`server started on http://localhost:${process.env.PORT || 8800}/graphql`);
     });
 };
 
