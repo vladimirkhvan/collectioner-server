@@ -21,10 +21,10 @@ export default (sequelize: Sequelize) => {
         role: {
             type: DataTypes.TINYINT.UNSIGNED,
             allowNull: false,
-            references:{
-                model:'role',
-                key:'id'
-            }
+            // references:{
+            //     model:'role',
+            //     key:'id'
+            // }
         },
     });
 

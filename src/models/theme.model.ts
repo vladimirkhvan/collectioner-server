@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize';
 
 export default async (sequelize: Sequelize) => {
 
-    const Theme = sequelize.define('tag', {
+    const Theme = sequelize.define('theme', {
         id: {
             type: DataTypes.TINYINT.UNSIGNED,
             allowNull: false,
