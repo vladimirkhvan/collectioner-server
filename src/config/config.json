@@ -3,7 +3,7 @@
         "username": "root",
         "password": "1234",
         "db_name": "collector",
-        "host": "localhost",
+        "host": "mysql_server",
         "dialect": "mysql"
     },
     "test": {
