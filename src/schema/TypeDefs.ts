@@ -72,7 +72,13 @@ export const typeDefs = gql`
         getAllUsers: [User!]
     }
 
-    type Mutation{
-        createUser(name: String!, password: String!, email: String!): User
+    input UserInput {
+        name: String! @constraint( minLength: 1, pattern: "^[0-9a-zA-Z]*$", maxLength: 255)
+        password: String! @constraint( minLength: 1, maxLength: 255)
+        email: String! @constraint(format: "email", maxLength: 255)
+    }
+
+    type Mutation {
+        createUser(input: UserInput!): User
     }
 `;
