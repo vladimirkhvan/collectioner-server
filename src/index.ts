@@ -2,12 +2,11 @@ import { db } from './models/index';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 
-import { resolvers } from './schema/Resolvers';
-import { typeDefs } from './schema/TypeDefs';
+import { schema } from './schema/Schema';
 
 const main = async () => {
     const app = express();
-    const server = new ApolloServer({ typeDefs, resolvers });
+    const server = new ApolloServer({ schema });
     await server.start();
     server.applyMiddleware({ app });
 

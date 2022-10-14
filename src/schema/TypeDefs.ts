@@ -1,12 +1,11 @@
 import { gql } from 'apollo-server-express';
 
-//TODO use @secret for password it will automatically encrypt it with bcrypt
-
 export const typeDefs = gql`
     type User {
         id: ID!
         name: String!
         password: String!
+        email: String!
         role: Int!
     }
     type Role {
@@ -74,6 +73,6 @@ export const typeDefs = gql`
     }
 
     type Mutation{
-        createUser(name: String!, password: String!): User
+        createUser(name: String!, password: String!, email: String!): User
     }
 `;
