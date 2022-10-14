@@ -1,5 +1,6 @@
 import { db } from '../models/index';
 import bcrypt from 'bcrypt';
+import { UserInput } from 'src/shared/constants/modelsTypes';
 
 export const resolvers = {
     Query: {
@@ -10,14 +11,14 @@ export const resolvers = {
     },
 
     Mutation: {
-        async createUser(parent: any, args: { name: string; password: string, email: string }) {
+        async createUser( _: any, { input } : UserInput) {
             const salt = await bcrypt.genSalt(5);
-            parent;
-            const hashedPassword = await bcrypt.hash(args.password, salt)
+            console.log(salt, input);
+            const hashedPassword = await bcrypt.hash(input.password, salt)
             const user = await db.user.create({
-                name: args.name,
+                name: input.name,
                 password: hashedPassword,
-                email: args.email,
+                email: input.email,
                 role: 1,
             });
 
