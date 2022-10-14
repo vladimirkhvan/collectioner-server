@@ -12,7 +12,7 @@ import role from './role.model';
 import theme from './theme.model';
 
 const config =
-    process.env.NODE_ENV === 'production' ? configPresets.production : configPresets.development;
+    process.env.NODE_ENV === 'test' ? configPresets.test : configPresets.development;
 
 const sequelize = new Sequelize(config.db_name, config.username, config.password, {
     host: config.host,

@@ -3,14 +3,14 @@
         "username": "root",
         "password": "1234",
         "db_name": "collector",
-        "host": "mysql_server",
+        "host": "localhost",
         "dialect": "mysql"
     },
     "test": {
         "username": "root",
         "password": "1234",
         "db_name": "collector",
-        "host": "localhost",
+        "host": "mysql_server",
         "dialect": "mysql"
     },
     "production": {
