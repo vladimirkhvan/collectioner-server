@@ -1,4 +1,5 @@
 import { db } from '../models/index';
+import bcrypt from 'bcrypt';
 
 export const resolvers = {
     Query: {
@@ -9,15 +10,20 @@ export const resolvers = {
     },
 
     Mutation: {
-        async createUser( parent:any , args: {name: String, password: String}){
+        async createUser(parent: any, args: { name: string; password: string, email: string }) {
+            const salt = await bcrypt.genSalt(5);
             parent;
+            const hashedPassword = await bcrypt.hash(args.password, salt)
             const user = await db.user.create({
                 name: args.name,
-                password: args.password,
-                role: 1
-            })
+                password: hashedPassword,
+                email: args.email,
+                role: 1,
+            });
+
+            console.log(user);
 
             return user;
-        }
-    }
+        },
+    },
 };
