@@ -1,0 +1,23 @@
+{
+    "development": {
+        "username": "root",
+        "password": "1234",
+        "db_name": "collector",
+        "host": "mysql_server",
+        "dialect": "mysql"
+    },
+    "test": {
+        "username": "root",
+        "password": "1234",
+        "db_name": "collector",
+        "host": "localhost",
+        "dialect": "mysql"
+    },
+    "production": {
+        "username": "bc28d183b11b62",
+        "password": "7f4a0721",
+        "db_name": "collector",
+        "host": "us-cdbr-east-06.cleardb.net",
+        "dialect": "mysql"
+    }
+}
