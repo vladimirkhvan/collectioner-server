@@ -2,5 +2,9 @@ export type UserType = {
     id: String;
     name: String;
     password: String;
-    role: number
+    role: number;
+};
+
+export interface UserInput {
+    input: { name: string; password: string; email: string };
 }
