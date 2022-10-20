@@ -69,7 +69,8 @@ export const typeDefs = gql`
     }
 
     type Query {
-        getAllUsers: [User!]
+        getAllUsers: [User!],
+        getMe: User,
     }
 
     input UserInput {
@@ -78,7 +79,14 @@ export const typeDefs = gql`
         email: String! @constraint(format: "email", maxLength: 255)
     }
 
+    input LoginInput {
+        email: String! @constraint(format: "email", maxLength: 255)
+        password: String! @constraint( minLength: 1, maxLength: 255)
+    }
+
     type Mutation {
         createUser(input: UserInput!): User
+        login(input: LoginInput): User
+        logout: Boolean
     }
 `;
