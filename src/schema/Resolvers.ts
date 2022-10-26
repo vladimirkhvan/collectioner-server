@@ -1,8 +1,13 @@
-import { UserType, LoginInput } from './../shared/constants/modelsTypes';
+import {
+    UserType,
+    LoginInput,
+    CollectionInput,
+    CollectionType,
+} from './../shared/constants/modelsTypes';
 import { db } from '../models/index';
 import bcrypt from 'bcrypt';
 import { UserInput } from 'src/shared/constants/modelsTypes';
-import { userContext } from 'src/shared/constants/userContext';
+import { userContext } from 'src/shared/context/userContext';
 
 export const resolvers = {
     Query: {
@@ -74,6 +79,22 @@ export const resolvers = {
                     res(true);
                 });
             });
+        },
+
+        async createCollection(_: any, { input }: CollectionInput, context: userContext): Promise<CollectionType | null> {
+            if (!context.req.session!.userId) {
+                return null;
+            }
+
+            const collection = await db.collection.create({
+                name: input.name,
+                authorId: context.req.session!.userId,
+                description: input.description,
+                theme: input.theme,
+                image: input.image ? input.image : null,
+            });
+
+            return collection.toJSON();
         },
     },
 };
