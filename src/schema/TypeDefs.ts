@@ -20,9 +20,11 @@ export const typeDefs = gql`
 
     type Collection {
         id: ID!
+        authorId: String!
         name: String!
         description: String!
         theme: Int!
+        image: String
     }
 
     type Tag {
@@ -69,10 +71,32 @@ export const typeDefs = gql`
     }
 
     type Query {
-        getAllUsers: [User!]
+        getAllUsers: [User!],
+        getMe: User,
     }
 
-    type Mutation{
-        createUser(name: String!, password: String!, email: String!): User
+    input UserInput {
+        name: String! @constraint( minLength: 2, pattern: "^[0-9a-zA-Z]*$", maxLength: 255)
+        password: String! @constraint( minLength: 2, maxLength: 255)
+        email: String! @constraint(format: "email", maxLength: 255)
+    }
+
+    input LoginInput {
+        email: String! @constraint(format: "email", maxLength: 255)
+        password: String! @constraint( minLength: 2, maxLength: 255)
+    }
+
+    input CollectionInput {
+        name: String! @constraint(minLength: 2 maxLength: 255)
+        description: String! @constraint( minLength: 2, maxLength: 255)
+        theme: Int! @constraint( min: 0 )
+        image: String
+    }
+
+    type Mutation {
+        createUser(input: UserInput!): User
+        login(input: LoginInput): User
+        logout: Boolean
+        createCollection(input: CollectionInput!): Collection
     }
 `;

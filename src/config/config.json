@@ -4,20 +4,23 @@
         "password": "1234",
         "db_name": "collector",
         "host": "localhost",
-        "dialect": "mysql"
+        "dialect": "mysql",
+        "redis_host": "localhost"
     },
     "test": {
         "username": "root",
         "password": "1234",
         "db_name": "collector",
         "host": "mysql_server",
-        "dialect": "mysql"
+        "dialect": "mysql",
+        "redis_host": "redis_server"
     },
     "production": {
-        "username": "bc28d183b11b62",
-        "password": "7f4a0721",
+        "username": "root",
+        "password": "1234",
         "db_name": "collector",
-        "host": "us-cdbr-east-06.cleardb.net",
-        "dialect": "mysql"
+        "host": "mysql_server",
+        "dialect": "mysql",
+        "redis_host": "redis_server"
     }
 }

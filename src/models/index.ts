@@ -10,9 +10,16 @@ import tag from './tags.model';
 import user from './user.model';
 import role from './role.model';
 import theme from './theme.model';
+import { CONFIG_OPTIONS } from '../shared/constants/enums';
+import { ConfigType } from '../shared/constants/types';
 
-const config =
-    process.env.NODE_ENV === 'test' ? configPresets.test : configPresets.development;
+let config: ConfigType = configPresets.development;
+
+if(process.env.NODE_ENV === CONFIG_OPTIONS.TEST){
+    config = configPresets.test;
+} else if (process.env.NODE_ENV === CONFIG_OPTIONS.PRODUCTION){
+    config = configPresets.production;
+}
 
 const sequelize = new Sequelize(config.db_name, config.username, config.password, {
     host: config.host,

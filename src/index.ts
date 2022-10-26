@@ -4,11 +4,47 @@ import { ApolloServer } from 'apollo-server-express';
 
 import { schema } from './schema/Schema';
 
+import session from 'express-session';
+import connectRedis from 'connect-redis';
+import { redis } from './redis';
+
 const main = async () => {
     const app = express();
-    const server = new ApolloServer({ schema });
+    app.set('trust proxy', process.env.NODE_ENV !== 'production');
+
+    const RedisStore = connectRedis(session);
+
+    const server = new ApolloServer({ schema, context: ({ req, res }) => ({ req, res }) });
+
+    app.use(
+        session({
+            store: new RedisStore({
+                client: redis,
+            }),
+            name: 'qid',
+            secret: '1234',
+            resave: false,
+            saveUninitialized: false,
+            cookie: {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                maxAge: 1000 * 60 * 60 * 24 * 365,
+                // sameSite: 'none',
+                path: '/',
+            },
+        }),
+    );
+
     await server.start();
-    server.applyMiddleware({ app });
+
+    server.applyMiddleware({
+        app,
+        cors: {
+            credentials: true,
+            origin: ['http://localhost:3000', 'https://studio.apollographql.com'],
+            allowedHeaders: ['Content-Type', 'Authorization'],
+        },
+    });
 
     try {
         await db.sequelize.authenticate();
