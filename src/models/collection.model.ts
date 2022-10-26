@@ -10,6 +10,10 @@ export default (sequelize: Sequelize) => {
             primaryKey: true,
             unique: true,
         },
+        authorId: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -27,7 +31,7 @@ export default (sequelize: Sequelize) => {
             // }
         },
         image: {
-            type: DataTypes.STRING(75)
+            type: DataTypes.STRING(150)
         }
     }, {
         timestamps: false,
