@@ -3,6 +3,8 @@ import {
     LoginInput,
     CollectionInput,
     CollectionType,
+    ThemeInput,
+    ThemeType,
 } from './../shared/constants/modelsTypes';
 import { db } from '../models/index';
 import bcrypt from 'bcrypt';
@@ -81,7 +83,11 @@ export const resolvers = {
             });
         },
 
-        async createCollection(_: any, { input }: CollectionInput, context: userContext): Promise<CollectionType | null> {
+        async createCollection(
+            _: any,
+            { input }: CollectionInput,
+            context: userContext,
+        ): Promise<CollectionType | null> {
             if (!context.req.session!.userId) {
                 return null;
             }
@@ -95,6 +101,22 @@ export const resolvers = {
             });
 
             return collection.toJSON();
+        },
+
+        async createTheme(
+            _: any,
+            { input }: ThemeInput,
+            context: userContext,
+        ): Promise<ThemeType | null> {
+            if (!context.req.session!.userId) {
+                return null;
+            }
+
+            const theme = await db.theme.create({
+                name: input.name,
+            });
+
+            return theme.toJSON();
         },
     },
 };
