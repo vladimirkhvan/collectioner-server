@@ -16,7 +16,7 @@ export type CollectionType = {
 
 export type ThemeType = {
     id: string;
-    name: string;
+    label: string;
 }
 
 export interface UserInput {
@@ -32,5 +32,5 @@ export interface CollectionInput {
 }
 
 export interface ThemeInput {
-    input: { name: string };
+    input: { label: string };
 }

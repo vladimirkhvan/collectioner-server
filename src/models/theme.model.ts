@@ -10,7 +10,7 @@ export default (sequelize: Sequelize) => {
             primaryKey: true,
             unique: true,
         },
-        name: {
+        label: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,

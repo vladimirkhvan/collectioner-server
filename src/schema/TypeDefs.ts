@@ -15,7 +15,7 @@ export const typeDefs = gql`
 
     type Theme {
         id: Int!
-        name: String!
+        label: String!
     }
 
     type Collection {
@@ -95,7 +95,7 @@ export const typeDefs = gql`
     }
 
     input ThemeInput {
-        name: String! @constraint(minLength: 2 maxLength: 255)
+        label: String! @constraint(minLength: 2 maxLength: 255)
     }
 
     type Mutation {

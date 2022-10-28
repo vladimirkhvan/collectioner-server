@@ -126,7 +126,7 @@ export const resolvers = {
             }
 
             const theme = await db.theme.create({
-                name: input.name,
+                label: input.label,
             });
 
             return theme.toJSON();
