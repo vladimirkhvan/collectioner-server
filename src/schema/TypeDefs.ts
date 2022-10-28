@@ -15,7 +15,7 @@ export const typeDefs = gql`
 
     type Theme {
         id: Int!
-        theme: String!
+        name: String!
     }
 
     type Collection {
@@ -93,10 +93,15 @@ export const typeDefs = gql`
         image: String
     }
 
+    input ThemeInput {
+        name: String! @constraint(minLength: 2 maxLength: 255)
+    }
+
     type Mutation {
         createUser(input: UserInput!): User
         login(input: LoginInput): User
         logout: Boolean
         createCollection(input: CollectionInput!): Collection
+        createTheme(input: ThemeInput!): Theme
     }
 `;
