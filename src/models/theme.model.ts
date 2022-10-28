@@ -1,6 +1,6 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
-export default async (sequelize: Sequelize) => {
+export default (sequelize: Sequelize) => {
 
     const Theme = sequelize.define('theme', {
         id: {
@@ -10,7 +10,7 @@ export default async (sequelize: Sequelize) => {
             primaryKey: true,
             unique: true,
         },
-        theme: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
