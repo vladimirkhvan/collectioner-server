@@ -73,6 +73,7 @@ export const typeDefs = gql`
     type Query {
         getAllUsers: [User!],
         getMe: User,
+        getThemes: [Theme]
     }
 
     input UserInput {
