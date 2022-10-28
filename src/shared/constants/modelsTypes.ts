@@ -8,11 +8,16 @@ export type UserType = {
 export type CollectionType = {
     id: string;
     name: string;
-    authorId: string,
+    authorId: string;
     description: string;
     theme: number;
     image: string;
 };
+
+export type ThemeType = {
+    id: string;
+    name: string;
+}
 
 export interface UserInput {
     input: { name: string; password: string; email: string };
@@ -23,5 +28,9 @@ export interface LoginInput {
 }
 
 export interface CollectionInput {
-    input: { name: string; authorId: string, description: string; theme: number, image: string };
+    input: { name: string; authorId: string; description: string; theme: number; image: string };
+}
+
+export interface ThemeInput {
+    input: { name: string };
 }
