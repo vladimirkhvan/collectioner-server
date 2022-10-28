@@ -11,6 +11,7 @@ import { redis } from './redis';
 const main = async () => {
     const app = express();
     app.set('trust proxy', process.env.NODE_ENV !== 'production');
+    // app.set('trust proxy', false);
 
     const RedisStore = connectRedis(session);
 
@@ -28,8 +29,10 @@ const main = async () => {
             cookie: {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
-                maxAge: 1000 * 60 * 60 * 24 * 365,
+                // secure: true,
                 // sameSite: 'none',
+                maxAge: 1000 * 60 * 60 * 24 * 365,
+                sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
                 path: '/',
             },
         }),
@@ -41,7 +44,7 @@ const main = async () => {
         app,
         cors: {
             credentials: true,
-            origin: ['http://localhost:3000', 'https://studio.apollographql.com'],
+            origin: ['http://localhost:3000', 'https://studio.apollographql.com', 'https://colle.vercel.app'],
             allowedHeaders: ['Content-Type', 'Authorization'],
         },
     });
