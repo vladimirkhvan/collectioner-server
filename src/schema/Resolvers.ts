@@ -2,9 +2,9 @@ import {
     UserType,
     LoginInput,
     CollectionInput,
-    CollectionType,
     ThemeInput,
     ThemeType,
+    CollectionType,
 } from './../shared/constants/modelsTypes';
 import { db } from '../models/index';
 import bcrypt from 'bcrypt';
@@ -42,7 +42,7 @@ export const resolvers = {
                 return null;
             }
 
-            return themes.map(theme => theme.toJSON());
+            return themes.map((theme) => theme.toJSON());
         },
     },
 
@@ -112,6 +112,15 @@ export const resolvers = {
                 theme: input.theme,
                 image: input.image ? input.image : null,
             });
+
+            input.fields &&
+                (await db.custom_field.bulkCreate(
+                    input.fields.map((field) => ({
+                        attribute: field.attribute,
+                        attribute_type: field.attribute_type,
+                        collection_id: collection.getDataValue('id'),
+                    })),
+                ));
 
             return collection.toJSON();
         },
