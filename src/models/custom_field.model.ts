@@ -20,7 +20,7 @@ export default (sequelize: Sequelize) => {
             allowNull: false,
         },
         collection_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             // references:{
             //     model:'collection',
