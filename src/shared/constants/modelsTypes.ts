@@ -5,19 +5,30 @@ export type UserType = {
     role: number;
 };
 
-export type CollectionType = {
+export interface CollectionType {
     id: string;
     name: string;
     authorId: string;
     description: string;
     theme: number;
     image: string;
+}
+
+export type CustomFieldsType = {
+    id: number;
+    attribute: string;
+    attribute_type: string;
+    collection_id: string;
 };
+
+export interface CreateCollectionReturn extends CustomFieldsType {
+    fields?: CustomFieldsType[];
+}
 
 export type ThemeType = {
     id: string;
     label: string;
-}
+};
 
 export interface UserInput {
     input: { name: string; password: string; email: string };
@@ -27,8 +38,27 @@ export interface LoginInput {
     input: { email: string; password: string };
 }
 
+enum TYPES {
+    STRING = 'string',
+    NUMBER = 'number',
+    BOOL = 'boolean',
+    DATE = 'date',
+}
+
+export interface CustomFieldsInput {
+    attribute: string;
+    attribute_type: TYPES;
+}
+
 export interface CollectionInput {
-    input: { name: string; authorId: string; description: string; theme: number; image: string };
+    input: {
+        name: string;
+        authorId: string;
+        description: string;
+        theme: number;
+        image?: string;
+        fields?: CustomFieldsInput[];
+    };
 }
 
 export interface ThemeInput {
