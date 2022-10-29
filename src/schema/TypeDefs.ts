@@ -71,31 +71,37 @@ export const typeDefs = gql`
     }
 
     type Query {
-        getAllUsers: [User!],
-        getMe: User,
+        getAllUsers: [User!]
+        getMe: User
         getThemes: [Theme]
     }
 
     input UserInput {
-        name: String! @constraint( minLength: 2, pattern: "^[0-9a-zA-Z]*$", maxLength: 255)
-        password: String! @constraint( minLength: 2, maxLength: 255)
+        name: String! @constraint(minLength: 2, pattern: "^[0-9a-zA-Z]*$", maxLength: 255)
+        password: String! @constraint(minLength: 2, maxLength: 255)
         email: String! @constraint(format: "email", maxLength: 255)
     }
 
     input LoginInput {
         email: String! @constraint(format: "email", maxLength: 255)
-        password: String! @constraint( minLength: 2, maxLength: 255)
+        password: String! @constraint(minLength: 2, maxLength: 255)
+    }
+
+    input CustomFieldInput {
+        attribute: String! @constraint( maxLength: 255)
+        attribute_type: ATTRIBUTE_TYPE!
     }
 
     input CollectionInput {
-        name: String! @constraint(minLength: 2 maxLength: 255)
-        description: String! @constraint( minLength: 2, maxLength: 255)
-        theme: Int! @constraint( min: 0 )
+        name: String! @constraint(minLength: 2, maxLength: 255)
+        description: String! @constraint(minLength: 2, maxLength: 255)
+        theme: Int! @constraint(min: 0)
         image: String
+        fields: [CustomFieldInput]
     }
 
     input ThemeInput {
-        label: String! @constraint(minLength: 2 maxLength: 255)
+        label: String! @constraint(minLength: 2, maxLength: 255)
     }
 
     type Mutation {
