@@ -13,10 +13,9 @@ export default (sequelize: Sequelize) => {
         attribute: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique:true,
         },
         attribute_type: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
         },
         collection_id: {
