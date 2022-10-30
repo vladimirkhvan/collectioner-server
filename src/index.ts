@@ -63,6 +63,20 @@ const main = async () => {
         console.error('could not connect to database: ', error);
     }
 
+    try {
+        await db.types.bulkCreate([
+            { attribute_type: 'BOOLEAN' },
+            { attribute_type: 'NUMBER' },
+            { attribute_type: 'STRING' },
+            { attribute_type: 'DATE' },
+        ], {
+            ignoreDuplicates: true
+        });
+        console.log('types were initialized successfully');
+    } catch (error) {
+        console.error('could not create types: ', error);
+    }
+
     app.listen(process.env.PORT || 8800, () => {
         console.log(`server started on http://localhost:${process.env.PORT || 8800}/graphql`);
     });
