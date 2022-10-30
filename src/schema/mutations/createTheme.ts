@@ -1,6 +1,7 @@
 import { db } from '../../models';
-import { ThemeInput, ThemeType } from 'src/shared/constants/modelsTypes';
 import { userContext } from 'src/shared/context/userContext';
+import { ThemeInput } from 'src/shared/constants/modelInputs/Theme';
+import { ThemeType } from 'src/shared/constants/modelTypes/Theme';
 
 export const createTheme = async (
     _: any,

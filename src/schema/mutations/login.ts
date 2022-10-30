@@ -1,7 +1,8 @@
 import { db } from "../../models";
-import { LoginInput, UserType } from "src/shared/constants/modelsTypes";
 import { userContext } from "src/shared/context/userContext";
 import bcrypt from 'bcrypt';
+import { LoginInput } from "src/shared/constants/modelInputs/Login";
+import { UserType } from "src/shared/constants/modelTypes/User";
 
 export const login = async (_: any, { input }: LoginInput, context: userContext): Promise<UserType | null> => {
     const user = await db.user.findOne({ where: { email: input.email } });

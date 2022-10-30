@@ -1,6 +1,6 @@
 import { db } from '../../models/index';
-import { UserType } from "src/shared/constants/modelsTypes";
 import { userContext } from "src/shared/context/userContext";
+import { UserType } from 'src/shared/constants/modelTypes/User';
 
 export const getMe = async (_: any, _args: any, context: userContext): Promise<UserType | null> =>  {
     if (!context.req.session!.userId) {

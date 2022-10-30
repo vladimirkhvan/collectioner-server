@@ -1,5 +1,6 @@
-import { UserInput, UserType } from "src/shared/constants/modelsTypes";
 import bcrypt from 'bcrypt';
+import { UserInput } from 'src/shared/constants/modelInputs/User';
+import { UserType } from 'src/shared/constants/modelTypes/User';
 import { db } from "../../models";
 
 export const createUser = async (_: any, { input }: UserInput): Promise<UserType> => {
