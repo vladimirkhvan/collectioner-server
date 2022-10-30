@@ -1,6 +1,7 @@
 import { db } from '../../models';
-import { CollectionInput, CollectionType } from 'src/shared/constants/modelsTypes';
 import { userContext } from 'src/shared/context/userContext';
+import { CollectionInput } from 'src/shared/constants/modelInputs/CollectionInput';
+import { CollectionType } from 'src/shared/constants/modelTypes/Collection';
 
 export const createCollection = async (
     _: any,
