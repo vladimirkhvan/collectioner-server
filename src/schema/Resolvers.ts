@@ -5,6 +5,7 @@ import {
     ThemeInput,
     ThemeType,
     CollectionType,
+    TYPES,
 } from './../shared/constants/modelsTypes';
 import { db } from '../models/index';
 import bcrypt from 'bcrypt';
@@ -113,14 +114,32 @@ export const resolvers = {
                 image: input.image ? input.image : null,
             });
 
-            input.fields &&
-                (await db.custom_field.bulkCreate(
+            if (input.fields) {
+                const types = await db.types.findAll();
+
+                const typesMap = types.reduce(
+                    (typesMap, currentType) => ({
+                        ...typesMap,
+                        [currentType.getDataValue('attribute_type')]:
+                            currentType.getDataValue('id'),
+                    }),
+                    {},
+                );
+
+                await db.custom_field.bulkCreate(
                     input.fields.map((field) => ({
                         attribute: field.attribute,
-                        attribute_type: field.attribute_type,
+                        attribute_type:
+                            // @ts-ignore
+                            typesMap[
+                                field.attribute_type !== TYPES.TEXT
+                                    ? field.attribute_type
+                                    : TYPES.STRING
+                            ],
                         collection_id: collection.getDataValue('id'),
                     })),
-                ));
+                );
+            }
 
             return collection.toJSON();
         },
