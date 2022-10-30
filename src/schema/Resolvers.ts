@@ -4,8 +4,7 @@ import {
     CollectionInput,
     ThemeInput,
     ThemeType,
-    CollectionType,
-    TYPES,
+    CollectionType
 } from './../shared/constants/modelsTypes';
 import { db } from '../models/index';
 import bcrypt from 'bcrypt';
@@ -132,9 +131,7 @@ export const resolvers = {
                         attribute_type:
                             // @ts-ignore
                             typesMap[
-                                field.attribute_type !== TYPES.TEXT
-                                    ? field.attribute_type
-                                    : TYPES.STRING
+                                field.attribute_type
                             ],
                         collection_id: collection.getDataValue('id'),
                     })),
