@@ -69,6 +69,7 @@ const main = async () => {
             { attribute_type: 'NUMBER' },
             { attribute_type: 'STRING' },
             { attribute_type: 'DATE' },
+            { attribute_type: 'TEXT' },
         ], {
             ignoreDuplicates: true
         });
