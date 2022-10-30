@@ -38,11 +38,12 @@ export interface LoginInput {
     input: { email: string; password: string };
 }
 
-enum TYPES {
-    STRING = 'string',
-    NUMBER = 'number',
-    BOOL = 'boolean',
-    DATE = 'date',
+export enum TYPES {
+    STRING = "STRING",
+    NUMBER = "NUMBER",
+    BOOL = "BOOL",
+    DATE = "DATE",
+    TEXT = "TEXT",
 }
 
 export interface CustomFieldsInput {
