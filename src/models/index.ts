@@ -10,6 +10,7 @@ import tag from './tags.model';
 import user from './user.model';
 import role from './role.model';
 import theme from './theme.model';
+import types from './types.model';
 import { CONFIG_OPTIONS } from '../shared/constants/enums';
 import { ConfigType } from '../shared/constants/types';
 
@@ -29,6 +30,7 @@ const sequelize = new Sequelize(config.db_name, config.username, config.password
 
 export const db = {
     sequelize,
+    types: types(sequelize),
     theme: theme(sequelize),
     collection: collection(sequelize),
     item: item(sequelize),
