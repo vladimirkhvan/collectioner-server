@@ -1,6 +1,6 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
-export default async (sequelize: Sequelize) => {
+export default (sequelize: Sequelize) => {
 
     const Tag = sequelize.define('tag', {
         id: {

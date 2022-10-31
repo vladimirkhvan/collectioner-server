@@ -25,10 +25,6 @@ export default (sequelize: Sequelize) => {
         theme: {
             type: DataTypes.TINYINT.UNSIGNED,
             allowNull:false,
-            // references:{
-            //     model:'theme',
-            //     key:'id'
-            // }
         },
         image: {
             type: DataTypes.STRING(150)

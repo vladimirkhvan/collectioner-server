@@ -10,23 +10,19 @@ export default (sequelize: Sequelize) => {
             primaryKey: true,
             unique: true,
         },
+        attribute_type: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         item_id: {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
-            // references:{
-            //     model: 'item',
-            //     key: 'id'
-            // }
         },
         custom_field_id: {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
-            // references:{
-            //     model: 'custom_field',
-            //     key: 'id'
-            // }
         },
-        data_value: {
+        string_value: {
             type: DataTypes.STRING
         },
         text_value: {
