@@ -1,4 +1,4 @@
-import { db } from './models/index';
+import { db_init } from './models/db_init';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 
@@ -49,34 +49,7 @@ const main = async () => {
         },
     });
 
-    try {
-        await db.sequelize.authenticate();
-        console.log('Connection has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }
-
-    try {
-        await db.sequelize.sync();
-        console.log('db was initialized successfully');
-    } catch (error) {
-        console.error('could not connect to database: ', error);
-    }
-
-    try {
-        await db.types.bulkCreate([
-            { attribute_type: 'BOOLEAN' },
-            { attribute_type: 'NUMBER' },
-            { attribute_type: 'STRING' },
-            { attribute_type: 'DATE' },
-            { attribute_type: 'TEXT' },
-        ], {
-            ignoreDuplicates: true
-        });
-        console.log('types were initialized successfully');
-    } catch (error) {
-        console.error('could not create types: ', error);
-    }
+    db_init();
 
     app.listen(process.env.PORT || 8800, () => {
         console.log(`server started on http://localhost:${process.env.PORT || 8800}/graphql`);
