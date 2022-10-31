@@ -1,5 +1,5 @@
 export type CustomFieldsType = {
-    id: number;
+    id: string;
     attribute: string;
     attribute_type: string;
     collection_id: string;
