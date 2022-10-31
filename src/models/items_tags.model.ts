@@ -1,6 +1,6 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
-export default async (sequelize: Sequelize) => {
+export default (sequelize: Sequelize) => {
     const Items_tags = sequelize.define(
         'items_tags',
         {
@@ -12,20 +12,12 @@ export default async (sequelize: Sequelize) => {
                 allowNull: false,
             },
             tag_id: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.INTEGER.UNSIGNED,
                 allowNull: false,
-                // references:{
-                //     model:'tag',
-                //     key:'id'
-                // }
             },
             item_id: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.INTEGER.UNSIGNED,
                 allowNull: false,
-                // references:{
-                //     model:'item',
-                //     key:'id'
-                // }
             },
         },
         {

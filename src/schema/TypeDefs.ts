@@ -46,7 +46,7 @@ export const typeDefs = gql`
 
     enum ATTRIBUTE_TYPE {
         BOOLEAN
-        INTEGER
+        NUMBER
         TEXT
         STRING
         DATE
@@ -70,10 +70,25 @@ export const typeDefs = gql`
         date_value: String
     }
 
+    type CollectionReturn {
+        id: ID!
+        authorId: String!
+        name: String!
+        description: String!
+        theme: Int!
+        image: String
+        user: User
+    }
+
     type Query {
         getAllUsers: [User!]
         getMe: User
         getThemes: [Theme]
+        getCollections: [CollectionReturn!]
+        getOneCollection(id: String): CollectionReturn
+        getTags: [Tag]
+        getCustomFields(collection_id: String): [Custom_field]
+        getItems(collection_id: String): [Item]
     }
 
     input UserInput {
@@ -104,11 +119,29 @@ export const typeDefs = gql`
         label: String! @constraint(minLength: 2, maxLength: 255)
     }
 
+    input CustomValuesInput{
+        attribute_type: ATTRIBUTE_TYPE!
+        customFieldId: String!
+        string_value: String @constraint(minLength: 1)
+        text_value: String @constraint(minLength: 1)
+        int_value: Int
+        boolean_value: Boolean
+        date_value: String 
+    }
+
+    input ItemInput {
+        name: String! @constraint(minLength: 2, maxLength: 255)
+        tags: [String]
+        collectionId: String!
+        customFieldsValues: [CustomValuesInput]
+    }
+
     type Mutation {
         createUser(input: UserInput!): User
         login(input: LoginInput): User
         logout: Boolean
         createCollection(input: CollectionInput!): Collection
         createTheme(input: ThemeInput!): Theme
+        createItem(input: ItemInput!): Item
     }
 `;

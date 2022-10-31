@@ -21,10 +21,6 @@ export default (sequelize: Sequelize) => {
         collection_id: {
             type: DataTypes.STRING,
             allowNull: false,
-            // references:{
-            //     model:'collection',
-            //     key:'id'
-            // }
         },
     }, {
         timestamps: false,

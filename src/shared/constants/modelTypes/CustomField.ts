@@ -1,6 +1,5 @@
-export type CustomFieldsType = {
+export interface CollectionType {
     id: string;
     attribute: string;
     attribute_type: string;
-    collection_id: string;
-};
+}

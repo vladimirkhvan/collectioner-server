@@ -1,3 +1,9 @@
+import { getItems } from './queries/getItems';
+import { getCustomFields } from './queries/getCustomFields';
+import { getTags } from './queries/getTags';
+import { createItem } from './mutations/createItem';
+import { getCollections } from './queries/getCollections';
+import { getOneCollection } from './queries/getOneCollection';
 import { createTheme } from './mutations/createTheme';
 import { createCollection } from './mutations/createCollection';
 import { logout } from './mutations/logout';
@@ -12,6 +18,11 @@ export const resolvers = {
         getAllUsers,
         getMe,
         getThemes,
+        getCollections,
+        getOneCollection,
+        getTags,
+        getCustomFields,
+        getItems
     },
 
     Mutation: {
@@ -20,5 +31,6 @@ export const resolvers = {
         logout,
         createCollection,
         createTheme,
+        createItem
     },
 };
